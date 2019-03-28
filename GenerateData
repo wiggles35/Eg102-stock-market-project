@@ -7,7 +7,31 @@
 
 % We will be using the getMarketDataViaYahoo function used from 
 % Artem Lenskiy, PhD
-data=zeros(2);
-for i=1:2
- data(i)= getMarketDataViaYahoo('AMD', '1-Jan-2018', datetime('today'), '5d');
+
+
+clear
+clc
+
+% Convert to cell array 
+dataTable=cell(1,50);
+
+% input 50 company tickers
+tickers = {'AAPL','ORCL','MSFT','ADBE','SYMC','CSCO','QCOM','SNPS','INTU','NVDA',...
+
+    'CRM','BLKB','GOOG','VMW','AES','AFL','A','AKAM','ALL','AMZN',...
+
+    'AXP','T','ADSK','BAC','BBY','HRB','COF','CBS','CTL','SCHW',...
+
+    'CI','CTAS','C','CX','KO','CL','CAG','COST','CMI','DE',...
+
+    'ETFC','EA','EXPE','FDX','JNJ','JPM','LMT','LOW','MAR','MCD'};
+
+% Run 50 times 
+% column headers are 'Date','open','high','low','close','adj close','volume'
+for i=1:50
+ dataTable(i)= {table2cell(getMarketDataViaYahoo(tickers{i}, '1-Jan-2009', datetime('today'), '1d'))};
+ disp('hi');
 end
+
+% save the data
+save('SampleOutputData.mat','dataTable');
