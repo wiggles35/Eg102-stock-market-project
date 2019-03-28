@@ -1,0 +1,13 @@
+% generateData.m
+% Author Ryan Wigglesworth
+% Collaborators:
+%  Emma Connors, Calvin Kusek
+%
+% This program will be used to generate a 3d array of all the data we will need
+
+% We will be using the getMarketDataViaYahoo function used from 
+% Artem Lenskiy, PhD
+data=zeros(2);
+for i=1:2
+ data(i)= getMarketDataViaYahoo('AMD', '1-Jan-2018', datetime('today'), '5d');
+end
